@@ -3,7 +3,7 @@ package models
 import interfaces.Liquidacio
 import java.util.Date
 
-abstract class CompteBancari: Liquidacio {
+abstract class CompteBancari {
     private var dataObertura:Date = Date()
     private var nomCompte: Int = 0
     private var saldo: Double = 0.0

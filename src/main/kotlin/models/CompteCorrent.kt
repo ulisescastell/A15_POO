@@ -3,7 +3,7 @@ package models
 import interfaces.Liquidacio
 import java.util.Date
 
-class CompteCorrent: CompteBancari {
+class CompteCorrent: CompteBancari, Liquidacio {
     private var comisioManteniment: Double = 0.0
 
     constructor() {}
