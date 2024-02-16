@@ -1,5 +1,6 @@
 package models
 
+import interfaces.Liquidacio
 import java.util.Date
 
 class CompteCorrent: CompteBancari {
@@ -25,6 +26,10 @@ class CompteCorrent: CompteBancari {
 
     fun cobrarComisio (){
 
+    }
+
+    override fun liquidar(): Double {
+        TODO("Not yet implemented")
     }
 
     override fun toString(): String {

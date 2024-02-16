@@ -1,8 +1,9 @@
 package models
 
+import interfaces.Liquidacio
 import java.util.Date
 
-open class CompteBancari {
+abstract class CompteBancari: Liquidacio {
     private var dataObertura:Date = Date()
     private var nomCompte: Int = 0
     private var saldo: Double = 0.0
