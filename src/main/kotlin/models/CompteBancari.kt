@@ -2,14 +2,14 @@ package models
 
 import java.util.Date
 
-class CompteBancari {
+open class CompteBancari {
     private var dataObertura:Date = Date()
     private var nomCompte: Int = 0
-    private var saldo: Int = 0
+    private var saldo: Double = 0.0
 
     constructor() {}
 
-    constructor(dataObertura: Date, nomCompte: Int, saldo: Int) {
+    constructor(dataObertura: Date, nomCompte: Int, saldo: Double) {
         this.dataObertura = dataObertura
         this.nomCompte = nomCompte
         this. saldo = saldo
@@ -23,7 +23,7 @@ class CompteBancari {
         return this.nomCompte
     }
 
-    fun getSaldo (): Int {
+    fun getSaldo (): Double {
         return this.saldo
     }
 
@@ -35,7 +35,7 @@ class CompteBancari {
         this.nomCompte = nomCompte
     }
 
-    fun setSaldo (saldo: Int) {
+    fun setSaldo (saldo: Double) {
         this.saldo = saldo
     }
     fun ingressar() {
