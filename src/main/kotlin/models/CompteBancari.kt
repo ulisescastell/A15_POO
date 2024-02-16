@@ -47,7 +47,6 @@ open class CompteBancari {
     }
 
     override fun toString(): String {
-        return "Data obertura: ${this.dataObertura}\n Nom Compte: ${this.nomCompte}\n" +
-                "  Saldo: ${this.saldo}"
+        return "Data obertura: ${this.dataObertura}\nNom Compte: ${this.nomCompte}\nSaldo: ${this.saldo}"
     }
 }

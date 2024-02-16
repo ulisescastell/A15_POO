@@ -1,8 +1,9 @@
 package models
 
+import interfaces.Liquidacio
 import java.util.Date
 
-class CompteEstalvi: CompteBancari {
+class CompteEstalvi: CompteBancari, Liquidacio {
     private var interes: Double = 0.0
 
     constructor() {}
@@ -19,8 +20,8 @@ class CompteEstalvi: CompteBancari {
         this.interes = interes
     }
 
-    fun liquidar () {
-
+    override fun liquidar (): Double {
+        return this.interes
     }
 
     override fun toString(): String {
