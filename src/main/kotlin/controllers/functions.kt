@@ -39,8 +39,8 @@ fun comprovarCoincidencia (compteBancariList: MutableList<CompteBancari>, nomCom
 fun crearCompteCorrent (compteBancariList: MutableList<CompteBancari>) {
     val nomCompte = readInt("Quin nom vols donarli al compte corrent?", "505 Error" )
     if (comprovarCoincidencia(compteBancariList, nomCompte)) {
-        compteBancariList.add(CompteCorrent(Date(), nomCompte, saldo = 0.0, 20.0))
-        println("${GREEN}Felicitats, el teu compte corrent amb nom $PURPLE$nomCompte$RESET s'ha creat satisfactoriament.")
+        compteBancariList.add(CompteCorrent(Date(), nomCompte, saldo = 0.0, comisioManteniment = 20.0))
+        println("${GREEN}Felicitats, el teu compte corrent amb nom $nomCompte$RESET s'ha creat satisfactoriament.")
         println("El teu comtpe actual: $PURPLE${compteBancariList.last()}$RESET")
     }
 }
@@ -49,7 +49,7 @@ fun crearCompteEstalvi (compteBancariList: MutableList<CompteBancari>) {
     val nomCompte = readInt("Quin nom vols donarli al compte estalvi?", "505 Error" )
     if (comprovarCoincidencia(compteBancariList, nomCompte)) {
         compteBancariList.add(CompteEstalvi(Date(), nomCompte, saldo = 0.0, 0.04))
-        println("${GREEN}Felicitats, el teu compte estalvi amb nom $GREEN$nomCompte$RESET s'ha creat satisfactoriament.")
+        println("${GREEN}Felicitats, el teu compte estalvi amb nom $nomCompte$RESET s'ha creat satisfactoriament.")
         println("El teu comtpe actual: $PURPLE${compteBancariList.last()}$RESET")
     }
 }
@@ -88,6 +88,15 @@ fun consultarSaldo(compteBancariList: MutableList<CompteBancari>) {
         println("${GREEN}Tens ${consultarSaldo.getSaldo()}€$RESET")
     } else {
         println("${YELLOW}No es pot fer la consulta$RESET")
+    }
+}
+
+fun retirarDiners(compteBancariList: MutableList<CompteBancari>) {
+    val quantitatARetirar = cercarCompte(compteBancariList)
+    if (quantitatARetirar != null) {
+        println("${GREEN}Tens ${quantitatARetirar}€$RESET")
+    } else {
+        println("${YELLOW}No es pot fer el retir del doblers$RESET")
     }
 }
 

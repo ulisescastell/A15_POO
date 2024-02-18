@@ -43,6 +43,6 @@ class CompteCorrent: CompteBancari, Liquidacio {
     }
 
     override fun toString(): String {
-        return super.toString() + "$PURPLE\nComisio Manteniment = ${this.comisioManteniment}%$RESET"
+        return super.toString() + "$PURPLE\nComisio Manteniment: ${this.comisioManteniment}%$RESET"
     }
 }
