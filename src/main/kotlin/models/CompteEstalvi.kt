@@ -1,5 +1,7 @@
 package models
 
+import PURPLE
+import RESET
 import interfaces.Liquidacio
 import java.util.Date
 
@@ -25,7 +27,7 @@ class CompteEstalvi: CompteBancari, Liquidacio {
     }
 
     override fun toString(): String {
-        return super.toString() + "\nInteres: ${this.interes * 100}%"
+        return super.toString() + "$PURPLE\nInteres: ${this.interes * 100}%$RESET"
     }
 
 }

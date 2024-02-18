@@ -1,5 +1,7 @@
 package models
 
+import PURPLE
+import RESET
 import interfaces.Liquidacio
 import readFloat
 import java.util.Date
@@ -50,6 +52,6 @@ abstract class CompteBancari {
     }
 
     override fun toString(): String {
-        return "\nData obertura: ${this.dataObertura}\nNom Compte: ${this.nomCompte}\nSaldo: ${this.saldo}€"
+        return "$PURPLE\nData obertura: ${this.dataObertura}\nNom Compte: ${this.nomCompte}\nSaldo: ${this.saldo}€$RESET"
     }
 }

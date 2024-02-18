@@ -21,6 +21,7 @@ fun main() {
             1 -> crearCompteCorrent(compteList)
             2 -> crearCompteEstalvi(compteList)
             3 -> ingressarDoblers(compteList)
+            4 -> consultarSaldo(compteList)
         }
     } while (userOption != 7)
 }

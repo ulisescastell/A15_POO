@@ -1,5 +1,7 @@
 package models
 
+import PURPLE
+import RESET
 import interfaces.Liquidacio
 import readFloat
 import java.util.Date
@@ -41,6 +43,6 @@ class CompteCorrent: CompteBancari, Liquidacio {
     }
 
     override fun toString(): String {
-        return super.toString() + "\nComisio Manteniment = ${this.comisioManteniment}%"
+        return super.toString() + "$PURPLE\nComisio Manteniment = ${this.comisioManteniment}%$RESET"
     }
 }
