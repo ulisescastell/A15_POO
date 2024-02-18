@@ -25,13 +25,14 @@ class CompteCorrent: CompteBancari, Liquidacio {
         println("Tens ${getSaldo()} €")
         val retirDoblers = readFloat("Introdueix la quantitat de doblers a retirar:", "505 ERROR")
         this.getSaldo() - retirDoblers
-        println("Et queden ${this.getSaldo() - retirDoblers} €")
+        this.cobrarComisio()
+        println("Et queden ${this.getSaldo()} €")
     }
 
     fun cobrarComisio (){
-        println("Tens ${getSaldo()} €")
         if (getSaldo() < 0) {
             println("Tens doblers en negatiu així que se't cobrará una comisió de descobert")
+            setSaldo(this.getSaldo()*1.1)
         }
     }
 

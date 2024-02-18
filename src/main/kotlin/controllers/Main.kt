@@ -12,16 +12,15 @@ import java.util.*
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
 
-    val compteCorrentList: MutableList<CompteCorrent> = mutableListOf()
-    val compteEstalviList: MutableList<CompteEstalvi> = mutableListOf()
+    val compteList: MutableList<CompteBancari> = mutableListOf()
 
     do {
         menu()
         val userOption: Int = readInt("Introdueix l'opció: ", "505 ERROR", "505 ERROR", 1, 7)
         when (userOption) {
-            1 -> crearCompteCorrent(compteCorrentList)
-            2 -> crearCompteEstalvi(compteEstalviList)
-            3 -> triarCercaCompte(compteEstalviList, compteCorrentList)
+            1 -> crearCompteCorrent(compteList)
+            2 -> crearCompteEstalvi(compteList)
+            3 -> ingressarDoblers(compteList)
         }
     } while (userOption != 7)
 }

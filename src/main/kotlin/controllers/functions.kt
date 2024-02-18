@@ -2,8 +2,10 @@ package controllers
 
 import GREEN
 import RESET
+import models.CompteBancari
 import models.CompteCorrent
 import models.CompteEstalvi
+import readFloat
 import readInt
 import readSentence
 import java.util.Date
@@ -20,59 +22,55 @@ fun menu () {
             "6. Liquidar un compte estalvi\n" +
             "7. Sortir del menú\n")
 }
-fun crearCompteCorrent (compteCorrentList: MutableList<CompteCorrent>) {
+
+fun comprovarCoincidencia (compteBancariList: MutableList<CompteBancari>, nomCompte: Int): Boolean {
+    for (compte in compteBancariList) {
+        if (compte.getNomCompte() == nomCompte) {
+            println("El nom del compte ja existeix, tria'n un altre")
+            return false
+        }
+    }
+    return true
+}
+fun crearCompteCorrent (compteBancariList: MutableList<CompteBancari>) {
     val nomCompte = readInt("Quin nom vols donarli al compte corrent?", "505 Error" )
-    compteCorrentList.add(CompteCorrent(Date(), nomCompte, saldo = 0.0, 20.0))
-    println("Felicitats, el teu compte corrent amb nom $GREEN$nomCompte$RESET s'ha creat satisfactoriament.")
-    println("El teu comtpe actual: ${compteCorrentList.last()}")
+    if (comprovarCoincidencia(compteBancariList, nomCompte)) {
+        compteBancariList.add(CompteCorrent(Date(), nomCompte, saldo = 0.0, 20.0))
+        println("Felicitats, el teu compte corrent amb nom $GREEN$nomCompte$RESET s'ha creat satisfactoriament.")
+        println("El teu comtpe actual: ${compteBancariList.last()}")
+    }
 }
-
-fun crearCompteEstalvi (compteEstalviList: MutableList<CompteEstalvi>) {
+fun crearCompteEstalvi (compteBancariList: MutableList<CompteBancari>) {
     val nomCompte = readInt("Quin nom vols donarli al compte estalvi?", "505 Error" )
-    compteEstalviList.add(CompteEstalvi(Date(), nomCompte, saldo = 0.0, 0.04))
-    println("Felicitats, el teu compte estalvi amb nom $GREEN$nomCompte$RESET s'ha creat satisfactoriament.")
-    println("El teu comtpe actual: ${compteEstalviList.last()}")
+    if (comprovarCoincidencia(compteBancariList, nomCompte)) {
+        compteBancariList.add(CompteEstalvi(Date(), nomCompte, saldo = 0.0, 0.04))
+        println("Felicitats, el teu compte estalvi amb nom $GREEN$nomCompte$RESET s'ha creat satisfactoriament.")
+        println("El teu comtpe actual: ${compteBancariList.last()}")
+    }
 }
 
-fun cercarCompteCorrent (compteCorrentList: MutableList<CompteCorrent>) {
-    val cercaCompte = readInt("Introdueix el nombre del compte corrent al qual vols fer l'ingrés:", "505 ERROR")
-    if (compteCorrentList.isEmpty()) {
+fun cercarCompte (compteBancariList: MutableList<CompteBancari>){
+    val cercaCompte = readInt("Introdueix el nombre del compte corrent al qual vols fer l'operació:", "505 ERROR")
+    if (compteBancariList.isEmpty()) {
         println("No es pot fer la cerca ja que el teu compte no existeix en el sistema.")
     } else {
-        for (compte in compteCorrentList) {
+        for (compte in compteBancariList) {
             if (compte.getNomCompte() == cercaCompte) {
-                println("Felicitats, si existeix")
-            } else {
-                println("El compte introduït no existeix")
+                println("Compte ${compte.getNomCompte()}:" +
+                        "\n${compte.toString()}")
+                return
             }
         }
+        println("El compte introduït no existeix")
     }
 }
 
-fun cercarCompteEstalvi(compteEstalviList: MutableList<CompteEstalvi>) {
-    val cercaCompte = readInt("Introdueix el nombre del compte estalvi al qual vols fer l'ingrés:", "505 ERROR")
-    if (compteEstalviList.isEmpty()) {
-        println("No es pot fer la cerca ja que el teu compte no existeix en el sistema.")
-    } else {
-        for (compte in compteEstalviList) {
-            if (compte.getNomCompte() == cercaCompte) {
-                println("Felicitats, si existeix")
-            } else {
-                println("El compte introduït no existeix")
-            }
-        }
-    }
-}
+fun ingressarDoblers(compteBancariList: MutableList<CompteBancari>) {
+    cercarCompte(compteBancariList)
 
-fun triarCercaCompte (compteEstalviList: MutableList<CompteEstalvi>, compteCorrentList: MutableList<CompteCorrent>) {
-    val userCercaCompte = readInt("Introdueix 1 si el teu compte és corrent o 2 si és d'estalvi: ", "505 ERROR", "505 ERROR", 1, 2)
-    if (userCercaCompte == 1) {
-        cercarCompteCorrent(compteCorrentList)
-    } else {
-        cercarCompteEstalvi(compteEstalviList)
-    }
-}
 
-fun
+
+
+}
 
 
