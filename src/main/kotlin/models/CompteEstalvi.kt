@@ -25,7 +25,7 @@ class CompteEstalvi: CompteBancari, Liquidacio {
     }
 
     override fun toString(): String {
-        return super.toString() + "\nInteres: ${this.interes}"
+        return super.toString() + "\nInteres: ${this.interes * 100}%"
     }
 
 }

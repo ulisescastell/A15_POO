@@ -1,6 +1,7 @@
 package models
 
 import interfaces.Liquidacio
+import readFloat
 import java.util.Date
 
 class CompteCorrent: CompteBancari, Liquidacio {
@@ -21,11 +22,17 @@ class CompteCorrent: CompteBancari, Liquidacio {
     }
 
     fun retirar() {
-
+        println("Tens ${getSaldo()} €")
+        val retirDoblers = readFloat("Introdueix la quantitat de doblers a retirar:", "505 ERROR")
+        this.getSaldo() - retirDoblers
+        println("Et queden ${this.getSaldo() - retirDoblers} €")
     }
 
     fun cobrarComisio (){
-
+        println("Tens ${getSaldo()} €")
+        if (getSaldo() < 0) {
+            println("Tens doblers en negatiu així que se't cobrará una comisió de descobert")
+        }
     }
 
     override fun liquidar(): Double {
@@ -33,6 +40,6 @@ class CompteCorrent: CompteBancari, Liquidacio {
     }
 
     override fun toString(): String {
-        return super.toString() + "\nComisio Manteniment = ${this.comisioManteniment}"
+        return super.toString() + "\nComisio Manteniment = ${this.comisioManteniment}%"
     }
 }

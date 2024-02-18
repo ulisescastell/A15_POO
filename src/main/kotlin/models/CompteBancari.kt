@@ -1,6 +1,7 @@
 package models
 
 import interfaces.Liquidacio
+import readFloat
 import java.util.Date
 
 abstract class CompteBancari {
@@ -40,14 +41,15 @@ abstract class CompteBancari {
         this.saldo = saldo
     }
     fun ingressar() {
-
+        val saldoExtra = readFloat("Introdueix la quantitat de doblers a introduïr:", "505 ERROR")
+        this.saldo += saldoExtra
     }
 
     fun consultarSaldo() {
-
+        getSaldo()
     }
 
     override fun toString(): String {
-        return "Data obertura: ${this.dataObertura}\nNom Compte: ${this.nomCompte}\nSaldo: ${this.saldo}"
+        return "\nData obertura: ${this.dataObertura}\nNom Compte: ${this.nomCompte}\nSaldo: ${this.saldo}€"
     }
 }
